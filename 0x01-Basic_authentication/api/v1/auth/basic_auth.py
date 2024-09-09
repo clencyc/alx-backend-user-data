@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """manage the API authentication"""
+from flask import request
+from typing import List, TypeVar
 from api.v1.auth.auth import Auth
+from models.user import User
+import base64
 
 
 class BasicAuth(Auth):
     """ Basic Auth class
     """
-    def extract_base64_authorization_header(self,                                      authorization_header: str) -> str:
+    def extract_base64_authorization_header(self, authorization_header: str) -> str:
         """ Extract base64 authorization header
         """
         if authorization_header is None or\
@@ -28,7 +32,7 @@ class BasicAuth(Auth):
         except Exception:
             return None
         
-    def extract_user_credentials(self, decoded_base64_authorization_header: str) -> tuple[str, str]:
+    def extract_user_credentials(self, decoded_base64_authorization_header: str) -> (str, str):
         """ returns the user email and password from the Base64 decoded value
         """
         if decoded_base64_authorization_header is None or\
