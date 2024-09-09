@@ -21,6 +21,7 @@ class Auth:
             return False
         return True
     
+
     def authorization_header(self, request=None) -> str:
         """ Method that return the value of the header request
         """
@@ -28,7 +29,9 @@ class Auth:
             return None
         return request.headers['Authorization']
     
+
     def current_user(self, request=None) -> TypeVar('User'):
         """ Method that return None
         """
         return None
+    
