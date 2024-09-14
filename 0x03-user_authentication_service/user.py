@@ -10,8 +10,10 @@ from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = 'users'
+
     """
     User class for the users table
     """
